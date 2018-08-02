@@ -1,6 +1,12 @@
+:root {
+    --color: #24BAA0;
+    --color-hover: #17907C;
+}
+
 * {
     box-sizing: border-box;
 }
+
 body {
     font-family: 'Raleway', sans-serif;
 }
@@ -13,4 +19,640 @@ img {
 .container {
     max-width: 1055px;
     margin: 0 auto;
+}
+
+.btn {
+    background: var(--color);
+    color: #fff;
+    border: 0;
+    border-radius: 5px;
+    padding: 5px 30px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.3s all;
+}
+
+.btn:hover {
+    background: var(--color-hover);
+}
+
+/* chowa labele w formularzu */
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    white-space: nowrap; /* 1 */
+}
+
+.row {
+    display: flex;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.col-1-3 {
+    width: 33.3333%;
+    padding: 0 15px;
+}
+
+.section-title {
+    font-size: 22px;
+    color: #575757;
+    font-weight: 600;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 13px;
+    margin-bottom: 45px;
+}
+
+.section-title:before {
+    content: '';
+    position: absolute; /*jak dajemy position:absolute to od razu element jest block i nie trzeba andawac display:block */
+    left: 0;
+    bottom: 0;
+    width: 320px;
+    height: 8px;
+    background: var(--color);
+}
+
+/* ------------------------------ */
+/* page header */
+/* ------------------------------ */
+
+.page-header {
+    background: #000;
+    height: 40px;
+}
+
+.page-header .container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.page-logo {
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.page-logo-link {
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #fff;
+    text-decoration: none;
+}
+
+.page-logo-link span {
+    color: var(--color);
+}
+
+.page-nav {
+}
+
+.page-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.page-nav-list li {
+    display: inline-block;
+    position: relative;
+
+}
+
+.page-nav-list a {
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0 10px;
+    line-height: 40px;
+    display: block;
+}
+
+.page-nav-list a:hover {
+    color: var(--color);
+}
+
+.page-nav-list li:hover .page-nav-sublist {
+    /*  display: block; */
+    opacity: 1;
+    visibility: visible;
+}
+
+.page-nav-sublist {
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.4s opacity;
+    background: black;
+    position: absolute;
+    left: 50%;
+    top: 55px;
+    transform: translate(-50%, 0);
+    padding: 10px 0;
+    z-index: 100;
+}
+
+.page-nav-sublist:before {
+    content: '';
+    width: 0;
+    height: 0;
+    display: block;
+    border: 10px solid transparent;
+    border-bottom-color: black;
+    position: absolute;
+    left: 50%;
+    top: -20px;
+    transform: translate(-50%, 0);
+}
+
+.page-nav-sublist:after {
+    content: '';
+    background: transparent; /*jak wstawi sie kolor to bedzie widac co zrobilismy (zakleilismy dziure miedzy listami) */
+    position: absolute;
+    left: 0;
+    top: -15px;
+    width: 100%;
+    height: 15px;
+}
+
+.page-nav-sublist li {
+    display: block;
+}
+
+.page-nav-sublist a {
+    text-transform: none;
+    font-weight: normal;
+    line-height: 2em;
+    padding: 0 20px;
+}
+
+/* ------------------------------ */
+/* banner */
+/* ------------------------------ */
+
+.main-slider-bg {
+    background-image: linear-gradient(#fafafa, #ddd);
+}
+
+.banner-slide-title span {
+    color: var(--color);
+}
+.banner-slides p {
+    font-size: 20px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.banner {
+    height: 500px;
+    display: flex;
+}
+
+.banner-prev,
+.banner-next {
+    width: 100px;
+    border: 0;
+    background: none;
+    font-size: 70px;
+    color: var(--color);
+    cursor: pointer;
+    transition: 0.4s all;
+}
+
+.banner-next {
+    order: 1;
+}
+
+.banner-prev:focus,
+.banner-next:focus {
+    outline: none;
+}
+
+.banner-prev:hover,
+.banner-next:hover {
+    color: var(--color-hover);
+}
+
+.banner-prev:active,
+.banner-next:active {
+    transform: scale(1.2);
+}
+
+.banner-slides {
+    flex-grow: 1;
+    position: relative;
+}
+
+.banner-slide {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: 0.5s all;
+    padding-top: 80px;
+}
+
+.banner-slide-active {
+    opacity: 1;
+    z-index: 1;
+}
+
+.banner-slide-title {
+    position: relative;
+    top: -30px;
+    opacity: 0;
+    transition: 0.5s all;
+    text-align: center;
+    font-size: 50px;
+}
+
+.banner-slide-active .banner-slide-title {
+    top: 0;
+    opacity: 1;
+}
+
+.banner-slide img {
+    float: left;
+    height: 350px;
+    width: 350px;
+}
+
+.centerA {
+    display: flex;
+    justify-content: center;
+}
+
+.banner-slide a {
+    display: flex;
+    justify-content: center;
+    width: 200px;
+    text-decoration: none;
+    margin-top: 20px;
+    text-align: center;
+}
+
+
+
+/* ------------------------------ */
+/* main articles */
+/* ------------------------------ */
+
+.main-articles-list {
+    padding: 30px 0 70px;
+}
+
+.main-article {
+}
+
+.main-article-link {
+    position: relative;
+    display: inline-block;
+}
+
+.main-article-link img {
+}
+
+.main-article-bar {
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.6);
+    padding: 20px;
+}
+
+.main-article-title {
+    margin: 0;
+    font-size: 16px;
+    color: #575757;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 13px;
+}
+
+.main-article-title:before {
+    content: '';
+    position: absolute; /*jak dajemy position:absolute to od razu element jest block i nie trzbe nadawac display:block */
+    left: 0;
+    bottom: 0;
+    width: 140px;
+    height: 7px;
+    background: var(--color);
+}
+
+.main-article-text {
+    border: 1px solid #ddd;
+    padding: 20px;
+    min-height: 255px;
+}
+
+.main-article-text p {
+
+}
+
+/* ------------------------------ */
+/* main price list */
+/* ------------------------------ */
+
+.main-price-list {
+    background-color: #d3d3d3;
+    padding: 30px 0 70px;
+    color: grey;
+}
+
+.main-price {
+    border: 2px solid #c1c1c1;
+    background-color: #f1f1f1;
+    min-height: 500px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+.main-price2 {
+    border: 2px solid var(--color);
+    background-color: var(--color);
+    min-height: 500px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.box-circle {
+    position: absolute;
+    left: 50%;
+    top: -10px;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 3px solid #c1c1c1;
+    background: #a9a9a9;
+    box-shadow: inset 0 0 0 10px white;
+}
+
+.box-circle2 {
+    position: absolute;
+    left: 50%;
+    top: -10px;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: inset 0 0 0 13px var(--color);
+}
+
+.main-price-title {
+    text-transform: uppercase;
+    color: var(--color);
+    text-align: center;
+    margin: 30px 0;
+}
+
+.main-price2 .main-price-title {
+    color: #fff;
+}
+
+.main-item-price {
+    height: 120px;
+    width: 120px;
+    border: 2px solid #c1c1c1;
+    border-radius: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 30px;
+    background-color: white;
+}
+
+.main-price2 .main-item-price {
+
+    border: none;
+    color: var(--color);
+}
+
+.main-item-price p:first-child {
+    font-weight: bold;
+    font-size: 1.9rem;
+}
+
+.main-item-price p {
+    margin: 2px;
+}
+
+.main-price-text {
+    width: 100%;
+}
+
+.main-price-text p {
+    margin: 0;
+    padding: 8px;
+    font-size: 1.3rem;
+    display: inline-block;
+    width: 100%;
+}
+
+.main-price .main-price-text p:nth-child(2n+1) {
+    background-color: #c1c1c1;
+}
+
+.main-price .main-price-text p:nth-child(2n) {
+    background-color: #ddd;
+}
+
+.main-price2 .main-price-text p:nth-child(2n+1) {
+    background-color: white;
+}
+
+.main-price2 .main-price-text p:nth-child(2n) {
+    background-color: #ddd;
+}
+
+.main-price-list a {
+    text-decoration: none;
+    position: absolute;
+    bottom: 20px;
+}
+
+.main-price2 a {
+    background-color: white;
+    display: block;
+    color: var(--color);
+}
+
+/* ------------------------------ */
+/* formularz */
+/* ------------------------------ */
+
+.main-contact {
+    padding: 30px 0 70px;
+}
+
+.form {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-left {
+    width: 635px;
+}
+
+.form-right {
+    width: 345px;
+}
+
+.form-row {
+    margin-bottom: 26px;
+}
+
+.form input[type="text"],
+.form input[type="email"],
+.form textarea {
+    height: 65px;
+    width: 100%;;
+    border: 1px solid var(--color);
+    font-size: 33px;
+    font-weight: 200;
+    padding: 0 15px;
+    transition: 0.3s all;
+}
+
+.form textarea {
+    height: 190px;
+    padding: 15px;
+    resize: vertical; /*uzytkownik nie bedzie mogl w poziomie powiekszac textarea */
+    min-height: 100px;
+}
+
+.form input[type="text"]:focus,
+.form input[type="email"]:focus,
+.form textarea:focus {
+    outline: none;
+    box-shadow: inset 0 0 0 2px var(--color);
+}
+
+/*stylowanie palceholdera*/
+.form input[type="text"]::placeholder,
+.form input[type="email"]::placeholder,
+.form textarea::placeholder {
+    color: #aaa;
+}
+
+.form-img {
+    background: url(../images/red_chair.png);
+    background-position: center -20px;
+    background-repeat: no-repeat;
+    height: 190px;
+}
+
+.form-checkbox {
+    position: relative;
+    font-size: 18px;
+    color: #aaa;
+    display: flex;
+    align-items: center;
+    margin-top: 25px;
+    margin-bottom: 38px;
+}
+
+.form-checkbox input {
+    position: absolute;
+    opacity: 0;
+    left: 0;
+    top: 0;
+    width: 48px;
+    height: 48px;
+}
+
+.form-checkbox span {
+    flex-shrink: 0;
+    margin-right: 10px;
+    width: 48px;
+    height: 48px;
+    border: 1px solid var(--color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-checkbox span:before {
+    content: '';
+    width: 48px;
+    height: 48px;
+    background-image: url(../images/form_ok.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    display: block;
+    opacity: 0;
+    transform: scale(0.2);
+    transition: 0.5s all;
+
+}
+
+.form-checkbox input:checked + span:before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.form-checkbox input:focus + span {
+    box-shadow: 0 0 0 2px var(--color);
+}
+
+.form-submit {
+    width: 100%;
+    height: 70px;
+    font-size: 34px;
+    font-weight: bold;
+}
+
+/* ------------------------------ */
+/* footer */
+/* ------------------------------ */
+
+.page-footer {
+    margin-top: 50px;
+    color: grey;
+}
+
+.page-footer .container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-left {
+
+}
+
+.footer-right {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-right a {
+    padding-right: 5px;
+}
+
+.footer-right p {
+    padding-left: 85px;
+}
+
+.footer-right span {
+    font-weight: bold;
 }
